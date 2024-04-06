@@ -133,7 +133,7 @@ func (self *LocalCommitsContext) GetSelectedCommitHash() string {
 	if commit == nil {
 		return ""
 	}
-	return commit.Sha
+	return commit.Hash
 }
 
 func (self *LocalCommitsContext) SelectCommitByHash(hash string) bool {
@@ -141,7 +141,7 @@ func (self *LocalCommitsContext) SelectCommitByHash(hash string) bool {
 		return false
 	}
 
-	if _, idx, found := lo.FindIndexOf(self.GetItems(), func(c *models.Commit) bool { return c.Sha == hash }); found {
+	if _, idx, found := lo.FindIndexOf(self.GetItems(), func(c *models.Commit) bool { return c.Hash == hash }); found {
 		self.SetSelection(idx)
 		return true
 	}

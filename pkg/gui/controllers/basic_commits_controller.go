@@ -175,7 +175,7 @@ func (self *BasicCommitsController) copyCommitHashToClipboard(commit *models.Com
 		return self.c.Error(err)
 	}
 
-	self.c.Toast(fmt.Sprintf("'%s' %s", commit.Sha, self.c.Tr.CopiedToClipboard))
+	self.c.Toast(fmt.Sprintf("'%s' %s", commit.Hash, self.c.Tr.CopiedToClipboard))
 	return nil
 }
 

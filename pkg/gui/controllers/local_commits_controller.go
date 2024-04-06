@@ -850,7 +850,7 @@ func (self *LocalCommitsController) createFixupCommit(commit *models.Commit) err
 					return self.c.Helpers().WorkingTree.WithEnsureCommitableFiles(func() error {
 						self.c.LogAction(self.c.Tr.Actions.CreateFixupCommit)
 						return self.c.WithWaitingStatusSync(self.c.Tr.CreatingFixupCommitStatus, func() error {
-							if err := self.c.Git().Commit.CreateFixupCommit(commit.Sha); err != nil {
+							if err := self.c.Git().Commit.CreateFixupCommit(commit.Hash); err != nil {
 								return self.c.Error(err)
 							}
 
@@ -884,7 +884,7 @@ func (self *LocalCommitsController) createFixupCommit(commit *models.Commit) err
 }
 
 func (self *LocalCommitsController) createAmendCommit(commit *models.Commit, includeFileChanges bool) error {
-	commitMessage, err := self.c.Git().Commit.GetCommitMessage(commit.Sha)
+	commitMessage, err := self.c.Git().Commit.GetCommitMessage(commit.Hash)
 	if err != nil {
 		return self.c.Error(err)
 	}
