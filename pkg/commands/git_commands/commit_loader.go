@@ -458,7 +458,7 @@ func setCommitMergedStatuses(ancestor string, commits []*models.Commit) {
 
 	passedAncestor := false
 	for i, commit := range commits {
-		// some commits aren't really commits and don't have hash's, such as the update-ref todo
+		// some commits aren't really commits and don't have hashes, such as the update-ref todo
 		if commit.Hash != "" && strings.HasPrefix(ancestor, commit.Hash) {
 			passedAncestor = true
 		}
